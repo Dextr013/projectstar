@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxn3n6726t48n"]
+
+[ext_resource type="Script" uid="uid://xwwwaektaiqx" path="res://scripts/boss.gd" id="1_0bnu1"]
+[ext_resource type="SpriteFrames" uid="uid://b7dpherv5uiny" path="res://boss.tres" id="2_neq0i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6xxrv"]
+size = Vector2(32, 32)
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_0bnu1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_neq0i")
+animation = &"boss1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6xxrv")
+
+[node name="ShootTimer" type="Timer" parent="."]
+
+[node name="PatternTimer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

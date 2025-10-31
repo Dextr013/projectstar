@@ -1,0 +1,131 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4x4s0n80d2cq"]
+
+[ext_resource type="Script" uid="uid://c822t5sa2u4v3" path="res://scripts/ship_selection.gd" id="1_ship_sel"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.1, 0.1, 0.2, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5, 0.7, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="ShipSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ship_sel")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5)
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 70.0
+offset_bottom = 35.0
+text = "< BACK"
+
+[node name="CoinsLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 35.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 0.84, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "COINS: 0"
+horizontal_alignment = 2
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 40.0
+offset_bottom = 65.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 0.5, 1)
+theme_override_font_sizes/font_size = 20
+text = "SELECT YOUR SHIP"
+horizontal_alignment = 1
+
+[node name="ShipContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 80.0
+offset_bottom = 140.0
+grow_horizontal = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="InfoPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -140.0
+offset_right = 100.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoPanel"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="ShipName" type="Label" parent="InfoPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0.5, 1)
+theme_override_font_sizes/font_size = 16
+text = "PHOENIX"
+horizontal_alignment = 1
+
+[node name="PreviewSprite" type="ColorRect" parent="InfoPanel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(0, 1, 1, 1)
+
+[node name="StatsLabel" type="Label" parent="InfoPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Speed: 150
+Shield: 10
+Fire Rate: 4/s"
+horizontal_alignment = 1
+
+[node name="SelectButton" type="Button" parent="InfoPanel"]
+layout_mode = 2
+text = "SELECT"
+
+[node name="UnlockButton" type="Button" parent="InfoPanel"]
+visible = false
+layout_mode = 2
+text = "UNLOCK (500)"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="InfoPanel/SelectButton" to="." method="_on_select_button_pressed"]
+[connection signal="pressed" from="InfoPanel/UnlockButton" to="." method="_on_unlock_button_pressed"]

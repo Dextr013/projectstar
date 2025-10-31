@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfam3cl2h4ji0"]
+
+[ext_resource type="Script" uid="uid://dglomu22mhux3" path="res://scripts/powerup.gd" id="1_vcqqu"]
+[ext_resource type="SpriteFrames" uid="uid://d4bqbpwvdfgym" path="res://powerup.tres" id="2_ih772"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wh0le"]
+radius = 8.0
+
+[sub_resource type="Animation" id="Animation_8vsy1"]
+resource_name = "shield"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ih772"]
+_data = {
+&"shield": SubResource("Animation_8vsy1")
+}
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_vcqqu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_ih772")
+animation = &"shield"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wh0le")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ih772")
+}
